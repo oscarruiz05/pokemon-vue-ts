@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const apiUrl = import.meta.env.VITE_APP_API_URL;
-
-const getPokemon = async (id: number) => {
-    return await axios.get(`${apiUrl}/${id}`).then((resp) => resp.data);
+const getPokemon = async (id: number, apiUrl?: string) => {
+    const baseUrl = apiUrl || import.meta.env.VITE_APP_API_URL;
+    return await axios.get(`${baseUrl}/${id}`).then((resp) => resp.data);
 }
 
 export default {

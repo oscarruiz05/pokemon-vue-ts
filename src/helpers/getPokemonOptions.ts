@@ -1,12 +1,12 @@
 import pokemonService from "@/services/pokemon";
 import { Pokemon } from "@/models/pokemon.model";
 
-const getPokemons = (): number[] => {
+export const getPokemons = (): number[] => {
   const pokemonsArr = Array.from(Array(650));
   return pokemonsArr.map((_, index) => index + 1);
 };
 
-const getPokemonNames = async (pokemons: number[]): Promise<Pokemon[]> => {
+export const getPokemonNames = async (pokemons: number[]): Promise<Pokemon[]> => {
   if (pokemons.length !== 4) throw "Pokemons must be 4";
   const [a, b, c, d] = pokemons;
 
@@ -34,4 +34,6 @@ const getPokemonOptions = async () => {
   return pokemons;
 };
 
-export default getPokemonOptions;
+// Export default for getPokemonOptions, and named for the others
+export { getPokemonOptions };
+export default getPokemonOptions; // Keep default export if it's used elsewhere as default
